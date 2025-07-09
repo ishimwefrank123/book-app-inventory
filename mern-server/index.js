@@ -47,6 +47,14 @@ async function run() {
       res.send(result);
     });
 
+    //to get single book data
+    app.get("/book/:id", async(req,res) =>{
+      const id = req.params.id;
+      const filter = {_id: new ObjectId(id)};
+      const result = await bookCollections.findOne(filter);
+      res.send(result);
+    })
+
     // Update a book
     app.patch("/book/:id", async (req, res) => {
       const id = req.params.id;
