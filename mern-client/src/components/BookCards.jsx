@@ -20,7 +20,7 @@ const BookCards = ({headline, books}) => {
       <h2 className='text-5xl text-center font-bold text-black my-5'>{headline}</h2>
 
       {/* cards */}
-      <div>
+      <div className='mt-12'>
         <Swiper
         slidesPerView={1}
         spaceBetween={10}

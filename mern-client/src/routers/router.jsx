@@ -7,6 +7,8 @@ import Home from "../home/Home";
 import Shop from "../shop/Shop";
 import About from "../components/About";
 import Blog from "../components/Blog";
+import SingleBook from "../shop/SingleBook";
+//import { SingleBook } from "../components/SingleBook";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: '/blog',
         element: <Blog/>,
+      },
+      {
+        path: '/book/:id',
+        element: <SingleBook/>,
+        loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
       }
     ]
   },
