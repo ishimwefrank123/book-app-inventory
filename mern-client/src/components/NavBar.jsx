@@ -10,7 +10,7 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
-  const {user} = useContext(AuthContext)
+  const {user, logOut} = useContext(AuthContext)
 
   // console.log(user)
 
@@ -63,7 +63,21 @@ const NavBar = () => {
           <div className='space-x-12 hidden lg:flex items-center'>
             <button><FaBarsStaggered className='w-5 hover:text=blue=700'/></button>
             {
-              user? user.email:""
+              user ? (
+                <div className='flex items-center gap-4'>
+                  <span>{user.email}</span>
+                  <button 
+                    onClick={() => logOut().then(() => alert('Logged out successfully'))}
+                    className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600'
+                  >
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link to="/login" className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>
+                  Login
+                </Link>
+              )
             }
           </div>
 
@@ -83,6 +97,21 @@ const NavBar = () => {
           navItems.map(({link,path}) => <Link key={path} to={path} className='block text-base
            text-white uppercase cursor-pointer hover:text-blue-700'>{link}</Link>)
         }
+        {user ? (
+          <div className='space-y-4'>
+            <div className='text-white'>{user.email}</div>
+            <button 
+              onClick={() => logOut().then(() => alert('Logged out successfully'))}
+              className='bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-full'
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <Link to="/login" className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 block text-center'>
+            Login
+          </Link>
+        )}
         </div>
       </nav>
     </header>

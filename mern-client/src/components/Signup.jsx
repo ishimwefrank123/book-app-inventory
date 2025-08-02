@@ -39,7 +39,7 @@ const Signup = () => {
     loginWithGoogle().then((result)=>{
       const user = result.user;
       alert('Sign up successfully')
-      navigate(from, {replace: ture})
+      navigate(from, {replace: true})
     }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
