@@ -61,7 +61,7 @@ const EditBooks = () => {
       },
       body: JSON.stringify(updateBookObj)
     }).then(res => res.json()).then(data => {
-      alert('Book is updaated successfully!!!');
+      alert('Book is updated successfully!!!');
       
     })
      

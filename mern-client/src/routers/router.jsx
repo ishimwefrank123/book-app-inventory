@@ -13,6 +13,7 @@ import Dashboard from "../dashboard/Dashboard";
 import UploadBook from "../dashboard/UploadBook";
 import ManageBooks from "../dashboard/ManageBooks";
 import EditBooks from "../dashboard/EditBooks";
+import Signup from "../components/Signup"
 //import { SingleBook } from "../components/SingleBook";
 const router = createBrowserRouter([
   // path for frontend
@@ -67,6 +68,9 @@ const router = createBrowserRouter([
         loader: ({params}) => fetch(`http://localhost:5000/book/${params.id}`)
       }
     ]
+  },{
+    path: "sign-up",
+    element: <Signup/>
   }
 ]);
 
